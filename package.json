@@ -1,5 +1,5 @@
 {
-  "name": "@tsukugi/multi-env-impl",
+  "name": "@atsu/multi-env-impl",
   "version": "1.0.0",
   "description": "Shared implementations for both Node and Browser",
   "main": "./build/umd.bundle.js",
