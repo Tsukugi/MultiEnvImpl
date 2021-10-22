@@ -1,1 +1,2 @@
-export { Impl } from './implHandler';
+export { ImplHandler } from './implHandler';
+export { EnvChecker } from './envChecker';

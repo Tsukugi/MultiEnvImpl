@@ -20,4 +20,4 @@ const errorHandler = (rule: boolean) => {
   }
 };
 
-export const EnvHandler = { isBrowser, isJsDom, isNode, isWebWorker };
+export const EnvChecker = { isBrowser, isJsDom, isNode, isWebWorker };

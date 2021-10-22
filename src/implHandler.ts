@@ -1,4 +1,4 @@
-import { EnvHandler } from './envHandler';
+import { EnvChecker } from './envChecker';
 import { createEventsImpl } from './impl/events';
 import { createFetchImpl } from './impl/fetch';
 import { createFileManagerImpl } from './impl/fileManager';
@@ -9,17 +9,20 @@ const handleImpl = <Res>(impl: () => Res): Res => {
   throw new Error(impl + 'Not Supported');
 };
 
-export const Impl = {
+export const ImplHandler = {
   fetch: handleImpl(() => {
-    if (EnvHandler.isBrowser) return createFetchImpl().browser;
-    if (EnvHandler.isNode) return createFetchImpl().node;
+    const { browser, node } = createFetchImpl();
+    if (EnvChecker.isBrowser) return browser;
+    if (EnvChecker.isNode) return node;
   }),
   fileManager: handleImpl(() => {
-    if (EnvHandler.isBrowser) return createFileManagerImpl().browser;
-    if (EnvHandler.isNode) return createFileManagerImpl().node;
+    const { browser, node } = createFileManagerImpl();
+    if (EnvChecker.isBrowser) return browser;
+    if (EnvChecker.isNode) return node;
   }),
   events: handleImpl(() => {
-    if (EnvHandler.isBrowser) return createEventsImpl().browser;
-    if (EnvHandler.isNode) return createEventsImpl().node;
+    const { browser, node } = createEventsImpl();
+    if (EnvChecker.isBrowser) return browser;
+    if (EnvChecker.isNode) return node;
   }),
 };
