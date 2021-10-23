@@ -9,7 +9,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "sourceMap": true,
     "types": ["node"]
   },
   "include": ["src/**/*.ts"],

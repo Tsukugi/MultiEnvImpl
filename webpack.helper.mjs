@@ -1,4 +1,5 @@
-const path = require('path');
+import { resolve } from 'path';
+import nodeExternals from 'webpack-node-externals';
 
 const isObject = item => item && typeof item === 'object' && !Array.isArray(item);
 const mergeDeep = (target, source) => {
@@ -33,6 +34,7 @@ const defaultConfig = {
   resolve: {
     extensions: ['.ts'],
   },
+  externals: [nodeExternals()],
 };
 
 const getCustomTsLoaderOptions = options => {
@@ -54,17 +56,21 @@ const getConfigTemplate = config => {
   return mergedConfig;
 };
 
-const getOutput = ({ type, name }) => ({
-  path: path.resolve(__dirname, 'build'),
-  filename: `${name || type}.bundle.js`,
-  library: { name: `${name || type}`, type },
-});
+const getOutput = ({ type, name }) => {
+  const ext = type === ('commonjs' || 'commonjs2') ? 'cjs' : 'js';
+
+  return {
+    path: resolve(resolve(), 'build'),
+    filename: `impl.${name || type}.bundle.${ext}`,
+    library: { type },
+  };
+};
 
 const getResolveFallback = () => ({
   fallback: { fs: false, http: false, https: false, url: false, path: false },
 });
 
-module.exports = {
+export {
   isObject,
   mergeDeep,
   getResolveFallback,

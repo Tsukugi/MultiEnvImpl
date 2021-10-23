@@ -20,6 +20,7 @@ export interface RequestOptionsTemplate {
   serverUrl: string;
   method?: 'GET' | 'POST';
   path?: string;
+  host?: string;
   headers?: Record<string, string>;
   body?: string;
 }
