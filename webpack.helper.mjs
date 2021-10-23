@@ -60,7 +60,7 @@ const getOutput = ({ type, name }) => {
   const ext = type === ('commonjs' || 'commonjs2') ? 'cjs' : 'js';
 
   return {
-    path: resolve(resolve(), 'build'),
+    path: resolve('build'),
     filename: `impl.${name || type}.bundle.${ext}`,
     library: { type },
   };

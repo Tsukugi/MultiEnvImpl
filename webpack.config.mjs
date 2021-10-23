@@ -2,17 +2,20 @@ import { getConfigTemplate, getCustomTsLoaderOptions, getOutput, getResolveFallb
 
 export default [
   getConfigTemplate({
-    module: { rules: [getCustomTsLoaderOptions({ configFile: 'tsconfig.esm.json' })] },
+    module: {
+      rules: [getCustomTsLoaderOptions({ configFile: 'tsconfig.esm.json' })],
+    },
     entry: ['./src/index.ts'],
     output: getOutput({ type: 'umd' }),
     resolve: getResolveFallback(),
   }),
   getConfigTemplate({
-    module: { rules: [getCustomTsLoaderOptions({ configFile: 'tsconfig.json' })] },
+    module: {
+      rules: [getCustomTsLoaderOptions({ configFile: 'tsconfig.json' })],
+    },
     entry: ['./src/index.ts'],
     target: 'node',
     externalsPresets: { node: true }, // in order to ignore built-in modules like path, fs, etc.
-    output: getOutput({ type: 'commonjs' }),
-    resolve: getResolveFallback(),
+    output: getOutput({ type: 'commonjs2', name: 'commonjs' }),
   }),
 ];

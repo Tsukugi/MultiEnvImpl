@@ -3,12 +3,9 @@
   "version": "1.0.2",
   "description": "Shared implementations for both Node and Browser",
   "type": "module",
-  "module": "./build/impl.umd.bundle.js",
   "exports": {
-    ".": {
-      "require": "./build/impl.commonjs.bundle.cjs",
-      "import": "./build/impl.umd.bundle.js"
-    }
+    "node": "./build/impl.commonjs.bundle.cjs",
+    "default": "./build/impl.umd.bundle.js"
   },
   "types": "./build/index.d.ts",
   "scripts": {

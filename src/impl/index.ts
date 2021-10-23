@@ -1,7 +1,7 @@
-import { EnvChecker } from './envChecker';
-import { createEventsImpl } from './impl/events';
-import { createFetchImpl } from './impl/fetch';
-import { createFileManagerImpl } from './impl/fileManager';
+import { EnvChecker } from '../envChecker';
+import { createEventsImpl } from './events';
+import { createFetchImpl } from './fetch';
+import { createFileManagerImpl } from './fileManager';
 
 const handleImpl = <Res>(impl: () => Res): Res => {
   const res = impl();
