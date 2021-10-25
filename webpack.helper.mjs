@@ -56,8 +56,9 @@ const getConfigTemplate = config => {
   return mergedConfig;
 };
 
+const cjsModules = ['commonjs', 'commonjs2'];
 const getOutput = ({ type, name }) => {
-  const ext = type === ('commonjs' || 'commonjs2') ? 'cjs' : 'js';
+  const ext = cjsModules.includes(type) ? 'cjs' : 'js';
 
   return {
     path: resolve('build'),

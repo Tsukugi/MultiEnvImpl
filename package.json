@@ -1,10 +1,13 @@
 {
   "name": "@atsu/multi-env-impl",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Shared implementations for both Node and Browser",
-  "type": "module",
+  "main": "./build/impl.umd.bundle.js",
   "exports": {
-    "node": "./build/impl.commonjs.bundle.cjs",
+    "node": {
+      "require": "./build/impl.commonjs.bundle.cjs",
+      "import": "./build/impl.commonjs2.bundle.cjs"
+    },
     "default": "./build/impl.umd.bundle.js"
   },
   "types": "./build/index.d.ts",
@@ -17,7 +20,7 @@
     "webpack:build": "npx webpack --mode=production",
     "webpack:watch": "npx webpack --mode=development --watch",
     "build": "npm run webpack:build",
-    "build:dev": "npm run prettier:write && npm run lint && npm run webpack:build",
+    "build:prod": "npm run prettier:write && npm run lint && npm run webpack:build",
     "prepare": "npm run webpack:build"
   },
   "keywords": [
