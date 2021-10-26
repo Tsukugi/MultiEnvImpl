@@ -10,5 +10,6 @@ Currently supports:
 - Events (EventTarget for Browser, EventEmitter for Node) 
 - FileManager (fs for Node, browser doesn't have an implementation yet because of how user is now required to give file access permission).
 
-It works by checking the env which the lib is installed on, and assigning the correct implementation, 
-considering that both impl are diferent a template is predefined, and this template provides the available options to use.
+It works by checking the env which the lib is installed on, and then uses the correct implementation, 
+considering that both implementations may have a different syntax, 
+a template is predefined and this provides the available options to use to the oustide.
